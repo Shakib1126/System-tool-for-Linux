@@ -104,4 +104,17 @@ int main() {
     uname(&unameData);
 
     printf("System Information:\n");
-    printf("  OS: %s %s %s\n", unameData.sysname, uname
+    printf("  OS: %s %s %s\n", unameData.sysname, unameData.release, unameData.machine);
+
+    long nproc = sysconf(_SC_NPROCESSORS_ONLN);
+    printf("  Number of Processor Cores: %ld\n", nproc);
+
+    displayMemoryInfo();
+    displayDiskSpaceInfo();
+    displayNetworkInfo();
+    displayCPUUsage();  // This is line 107 in the code.
+    displayLoadAverage();
+    displayUptime();
+
+    return 0;
+}
